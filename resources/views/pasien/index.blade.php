@@ -10,8 +10,24 @@
         </a>
     </div>
 
-    <div class="card p-4">
-        <p>Halaman data pasien rumah sakit.</p>
-    </div>
+    <ul class="list-group">
+
+        @foreach ($pasiens as $pasien)
+            <li class="list-group-item">
+
+                {{ $loop->iteration }}.
+
+                {{ $pasien->nama_pasien }} -
+
+                {{ $pasien->umur }} Tahun -
+
+                {{ $pasien->jenis_kelamin }} -
+
+                {{ $pasien->keluhan }}
+
+            </li>
+        @endforeach
+
+    </ul>
 
 </x-App>
