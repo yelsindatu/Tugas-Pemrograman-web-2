@@ -2,15 +2,19 @@
 
     <x-slot:title>{{ $title }}</x-slot>
 
-    <div class="d-flex justify-content-between mb-4">
+    @session('success')
+        <div class="alert alert-success">
 
-        <h2 class="fw-bold">Data Pasien</h2>
+            {{ session('success') }}
 
-        <a href="/pasien/create" class="btn btn-primary">
-            Tambah Pasien
-        </a>
+        </div>
+    @endsession
 
-    </div>
+    <a href="{{ route('pasien.create') }}" class="btn btn-primary mb-3">
+
+        Tambah Pasien
+
+    </a>
 
     <ul class="list-group">
 
