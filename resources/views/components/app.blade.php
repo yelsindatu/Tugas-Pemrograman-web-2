@@ -14,7 +14,6 @@
 
     <div class="bg-primary text-white text-center py-5">
         <h1 class="fw-bold">Rumah Sakit</h1>
-        <p>Sistem Pendataan Pasien</p>
     </div>
 
     <div class="container my-5">

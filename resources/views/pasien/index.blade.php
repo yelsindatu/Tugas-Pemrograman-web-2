@@ -33,6 +33,8 @@
 
                 {{ $pasien->keluhan }}
 
+                <a href="{{ route('pasien.edit', $pasien) }}" class="btn btn-warning btn-sm">Edit</a>
+
             </li>
         @endforeach
 

@@ -13,3 +13,9 @@ Route::get('/pasien/create', [PasienController::class, 'create'])
 
 Route::post('/pasien/store', [PasienController::class, 'store'])
     ->name('pasien.store');
+
+Route::get('/pasien/{pasien}/edit', [PasienController::class, 'edit'])
+    ->name('pasien.edit');
+
+Route::put('/pasien/{pasien}', [PasienController::class, 'update'])
+    ->name('pasien.update');
