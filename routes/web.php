@@ -19,3 +19,6 @@ Route::get('/pasien/{pasien}/edit', [PasienController::class, 'edit'])
 
 Route::put('/pasien/{pasien}', [PasienController::class, 'update'])
     ->name('pasien.update');
+
+Route::delete('/pasien/{pasien}', [PasienController::class, 'destroy'])
+    ->name('pasien.destroy');
