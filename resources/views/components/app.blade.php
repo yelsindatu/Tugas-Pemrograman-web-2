@@ -24,6 +24,12 @@
                 <a class="nav-link" href="{{ route('poli.index') }}">
                     Poli
                 </a>
+
+                <a class="nav-link" href="{{ route('dokter.index') }}">
+                    dokter
+                </a>
+
+
             </div>
         </div>
     </nav>
