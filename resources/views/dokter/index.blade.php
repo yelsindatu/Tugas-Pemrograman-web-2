@@ -1,7 +1,13 @@
 <x-app>
     <x-slot:title>{{ $title }}</x-slot>
 
-    <a class="btn btn-danger mb-3" href="#">
+    @session('success')
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endsession
+
+    <a class="btn btn-danger mb-3" href="{{ route('dokter.create') }}">
         Create
     </a>
 
@@ -15,19 +21,13 @@
 
             <div class="col-md-5">
                 <select name="poli" class="form-control">
-
-                    <option value="">
-                        Semua Poli
-                    </option>
+                    <option value="">Semua Poli</option>
 
                     @foreach ($polis as $poli)
                         <option value="{{ $poli->id }}" @selected(request('poli') == $poli->id)>
-
                             {{ $poli->nama_poli }}
-
                         </option>
                     @endforeach
-
                 </select>
             </div>
 
@@ -50,6 +50,24 @@
                 {{ $dokter->no_telepon }} --
                 {{ $dokter->poli->nama_poli }} --
                 {{ $dokter->created_at->format('d-m-Y') }}
+
+
+                <a href="{{ route('dokter.show', $dokter) }}" class="btn btn-info btn-sm">
+                    Detail
+                </a>
+
+                <a href="{{ route('dokter.edit', $dokter) }}" class="btn btn-warning btn-sm">
+                    Edit
+                </a>
+
+                <form action="{{ route('dokter.destroy', $dokter) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin?')">
+                        Delete
+                    </button>
+                </form>
             </li>
         @endforeach
     </ul>

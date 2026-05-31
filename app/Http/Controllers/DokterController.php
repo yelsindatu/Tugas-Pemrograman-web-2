@@ -32,12 +32,26 @@ class DokterController extends Controller
 
     public function create()
     {
-        //
+        return view('dokter.create', [
+            'title' => 'Tambah Dokter',
+            'polis' => Poli::all()
+        ]);
     }
 
     public function store(Request $request)
     {
-        //
+                $validated = $request->validate([
+            'poli_id' => 'required',
+            'nama_dokter' => 'required',
+            'spesialis' => 'required',
+            'no_telepon' => 'required',
+        ]);
+
+        Dokter::create($validated);
+
+        return redirect()
+            ->route('dokter.index')
+            ->withSuccess('Data dokter berhasil ditambahkan');
     }
 
     public function show(Dokter $dokter)
