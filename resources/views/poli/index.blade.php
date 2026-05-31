@@ -26,6 +26,16 @@
                 <a href="{{ route('poli.edit', $poli) }}" class="btn btn-warning btn-sm">
                     Edit
                 </a>
+
+                <form action="{{ route('poli.destroy', $poli) }}" method="POST" class="d-inline">
+                    @csrf
+                    @method('DELETE')
+
+                    <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Anda yakin?')">
+                        Delete
+                    </button>
+                </form>
+
             </li>
         @endforeach
     </ul>

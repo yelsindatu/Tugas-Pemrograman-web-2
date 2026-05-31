@@ -83,6 +83,7 @@ class PoliController extends Controller
 
     public function destroy(Poli $poli)
     {
-        //
+        $poli->delete($poli);
+        return to_route('poli.index')->withSuccess('Data poli berhasil dihapus');
     }
 }

@@ -2,24 +2,28 @@
 
 namespace Database\Factories;
 
-use App\Models\Poli;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class PoliFactory extends Factory
 {
-    protected $model = Poli::class;
-
     public function definition(): array
     {
         return [
+            'kode_poli' => fake()->unique()->bothify('PL###'),
             'nama_poli' => fake()->randomElement([
                 'Poli Umum',
-                'Poli Anak',
                 'Poli Gigi',
+                'Poli THT',
+                'Poli Anak',
                 'Poli Mata',
-                'Poli THT'
             ]),
-            'lokasi' => 'Lantai ' . fake()->numberBetween(1, 5),
+            'lokasi' => fake()->randomElement([
+                'Lantai 1',
+                'Lantai 2',
+                'Lantai 3',
+                'Lantai 4',
+                'Lantai 5',
+            ]),
         ];
     }
 }

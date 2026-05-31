@@ -9,8 +9,6 @@ class PoliSeeder extends Seeder
 {
     public function run(): void
     {
-        Poli::factory()
-            ->count(15)
-            ->create();
+        Poli::factory(15)->create();
     }
 }
