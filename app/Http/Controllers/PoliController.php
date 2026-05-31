@@ -57,12 +57,28 @@ class PoliController extends Controller
 
     public function edit(Poli $poli)
     {
-        //
+        return view('poli.edit', [
+            'title' => 'Edit Poli',
+            'poli' => $poli
+        ]);
     }
 
     public function update(Request $request, Poli $poli)
     {
-        //
+        $validated = $request->validate([
+            'kode_poli' => 'required|max:255',
+            'nama_poli' => 'required|max:255',
+            'lokasi' => 'required|max:255',
+        ], [
+            'kode_poli.required' => 'Kode poli wajib diisi',
+            'nama_poli.required' => 'Nama poli wajib diisi',
+            'lokasi.required' => 'Lokasi wajib diisi',
+        ]);
+
+        $poli->update($validated);
+
+        return to_route('poli.index')
+            ->withSuccess('Data poli berhasil diubah');
     }
 
     public function destroy(Poli $poli)

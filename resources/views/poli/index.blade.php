@@ -12,11 +12,7 @@
     </a>
 
     <form action="" class="mb-3">
-        <input type="text"
-               name="keyword"
-               class="form-control"
-               placeholder="Cari Poli"
-               value="{{ request('keyword') }}">
+        <input type="text" name="keyword" class="form-control" placeholder="Cari Poli" value="{{ request('keyword') }}">
     </form>
 
     <ul class="list-group">
@@ -26,6 +22,10 @@
                 {{ $poli->kode_poli }} --
                 {{ $poli->nama_poli }} --
                 {{ $poli->lokasi }}
+
+                <a href="{{ route('poli.edit', $poli) }}" class="btn btn-warning btn-sm">
+                    Edit
+                </a>
             </li>
         @endforeach
     </ul>
