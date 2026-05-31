@@ -91,6 +91,9 @@ class DokterController extends Controller
 
     public function destroy(Dokter $dokter)
     {
-        //
+        $dokter->delete($dokter);
+
+        return redirect()->route('dokter.index')
+        ->withSuccess('Data dokter berhasil dihapus');
     }
 }
