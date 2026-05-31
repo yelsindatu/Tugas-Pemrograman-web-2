@@ -52,7 +52,10 @@ class PoliController extends Controller
 
     public function show(Poli $poli)
     {
-        //
+        return view('poli.show', [
+            'title' => 'Detail Poli',
+            'poli' => $poli
+        ]);
     }
 
     public function edit(Poli $poli)

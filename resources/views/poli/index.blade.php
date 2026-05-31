@@ -23,6 +23,10 @@
                 {{ $poli->nama_poli }} --
                 {{ $poli->lokasi }}
 
+                <a href="{{ route('poli.show', $poli) }}" class="btn btn-info btn-sm">
+                    Detail
+                </a>
+
                 <a href="{{ route('poli.edit', $poli) }}" class="btn btn-warning btn-sm">
                     Edit
                 </a>
