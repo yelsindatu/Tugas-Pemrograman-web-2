@@ -11,7 +11,8 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
     'nama_dokter',
     'spesialis',
     'no_telepon',
-    'poli_id'
+    'poli_id',
+    'tanggal'
 ])]
 
 class Dokter extends Model

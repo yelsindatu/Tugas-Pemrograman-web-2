@@ -61,12 +61,32 @@ class DokterController extends Controller
 
     public function edit(Dokter $dokter)
     {
-        //
+        return view('dokter.edit', [
+            'title' => 'Edit Dokter',
+            'dokter' => $dokter,
+            'polis' => Poli::all()
+        ]);
     }
 
     public function update(Request $request, Dokter $dokter)
     {
-        //
+        $validated = $request->validate([
+            'nama_dokter' => 'required|min:3|max:255',
+            'spesialis' => 'required|max:255',
+            'no_telepon' => 'required|max:20',
+            'poli_id' => 'required',
+        ], [
+            'nama_dokter.required' => 'Nama dokter wajib diisi',
+            'spesialis.required' => 'Spesialis wajib diisi',
+            'no_telepon.required' => 'Nomor telepon wajib diisi',
+            'poli_id.required' => 'Poli wajib dipilih',
+        ]);
+
+        $dokter->update($validated);
+
+        return redirect()
+            ->route('dokter.index')
+            ->withSuccess('Data dokter berhasil diubah');
     }
 
     public function destroy(Dokter $dokter)
