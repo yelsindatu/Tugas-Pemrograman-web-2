@@ -56,7 +56,10 @@ class DokterController extends Controller
 
     public function show(Dokter $dokter)
     {
-        //
+        return view('dokter.show', [
+            'title' => 'Detail Dokter ' . $dokter->nama_dokter,
+            'dokter' => $dokter
+        ]);
     }
 
     public function edit(Dokter $dokter)
