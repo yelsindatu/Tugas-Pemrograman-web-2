@@ -26,12 +26,28 @@ class PoliController extends Controller
 
     public function create()
     {
-        //
+        return view('poli.create', [
+            'title' => 'Tambah Poli'
+        ]);
     }
 
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'nama_poli' => 'required|string|max:255',
+            'kode_poli' => 'required|string|unique:polis,kode_poli',
+            'lokasi' => 'required|string|max:255',
+        ], [
+            'nama_poli.required' => 'Nama poli wajib diisi',
+            'kode_poli.required' => 'Kode poli wajib diisi',
+            'kode_poli.unique' => 'Kode poli sudah ada',
+            'lokasi.required' => 'Lokasi wajib diisi',
+        ]);
+
+        Poli::create($validated);
+
+        return to_route('poli.index')
+            ->withSuccess('Data berhasil ditambahkan');
     }
 
     public function show(Poli $poli)
