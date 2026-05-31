@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PasienController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PoliController;
 
 Route::get('/', [PasienController::class, 'index']);
 
@@ -22,3 +23,5 @@ Route::put('/pasien/{pasien}', [PasienController::class, 'update'])
 
 Route::delete('/pasien/{pasien}', [PasienController::class, 'destroy'])
     ->name('pasien.destroy');
+
+Route::resource('/poli', PoliController::class);

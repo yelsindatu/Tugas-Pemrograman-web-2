@@ -12,8 +12,24 @@
 
 <body>
 
+    <nav class="navbar navbar-expand-lg bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand fw-bold" href="#">Rumah Sakit</a>
+
+            <div class="navbar-nav">
+                <a class="nav-link" href="{{ route('pasien.index') }}">
+                    Pasien
+                </a>
+
+                <a class="nav-link" href="{{ route('poli.index') }}">
+                    Poli
+                </a>
+            </div>
+        </div>
+    </nav>
+
     <div class="bg-primary text-white text-center py-5">
-        <h1 class="fw-bold">Rumah Sakit</h1>
+        <h1 class="fw-bold">{{ $title }}</h1>
     </div>
 
     <div class="container my-5">

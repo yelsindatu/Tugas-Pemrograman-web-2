@@ -9,7 +9,19 @@ class PoliController extends Controller
 {
     public function index()
     {
-        //
+        $polis = Poli::latest();
+
+        $keyword = request('keyword');
+
+        if ($keyword) {
+            $polis->where('nama_poli', 'like', '%' . $keyword . '%')
+                  ->orWhere('kode_poli', 'like', '%' . $keyword . '%');
+        }
+
+        return view('poli.index', [
+            'title' => 'Data Poli',
+            'polis' => $polis->paginate(5)->withQueryString(),
+        ]);
     }
 
     public function create()
